@@ -6,27 +6,22 @@ A pocket-sized, fully offline voice recorder: ESP32-S3 captures audio to a micro
 
 ## 1. Overview
 
-```
-┌───────────────────────────────┐
-│      ESP32-S3-Zero Puck       │
-│                                │
-│  I2S mic → 16kHz mono WAV → SD│
-│  Record button (start/stop)   │
-│  OLED status screen           │
-│  BLE GATT server (sync)       │
-└───────────────┬───────────────┘
-                │ BLE
-                ▼
-┌───────────────────────────────┐
-│         Android App            │
-│      (Kotlin + Compose)        │
-│                                │
-│  BLE client → pull WAV files   │
-│  whisper.cpp on-device         │
-│    (target: Snapdragon 8 Elite)│
-│  Room DB + FTS search          │
-│  Notes list, search, export    │
-└───────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Puck["ESP32-S3-Zero Puck"]
+        mic[I2S mic → 16kHz mono WAV → SD]
+        btn[Record button start/stop]
+        oled[OLED status screen]
+        ble[BLE GATT server sync]
+    end
+    subgraph App["Android App (Kotlin + Compose)"]
+        client[BLE client → pull WAV files]
+        whisper[whisper.cpp on-device<br/>target: Snapdragon 8 Elite]
+        db[(Room DB + FTS search)]
+        notes[Notes list, search, export]
+        client --> whisper --> db --> notes
+    end
+    Puck -->|BLE| App
 ```
 
 No WiFi, no backend server — sync and transcription are fully local to the phone.
@@ -82,11 +77,12 @@ No WiFi, no backend server — sync and transcription are fully local to the pho
 **Record button** — one leg to GPIO2, diagonal leg to GND, `INPUT_PULLUP`.
 
 **Power chain**
-```
-LiPo (JST) → TP4056 B+/B−
-TP4056 OUT+ → slide switch → ESP32-S3-Zero 5V
-TP4056 OUT− → ESP32-S3-Zero GND (direct, not through switch)
-TP4056 USB-C → charging input (independent of ESP32-S3-Zero's own USB-C)
+```mermaid
+flowchart LR
+    lipo["LiPo (JST)"] -->|B+/B−| tp[TP4056]
+    tp -->|OUT+| sw[Slide switch] -->|5V| esp[ESP32-S3-Zero]
+    tp -->|"OUT− (direct, not switched)"| esp
+    charge["USB-C charger"] -->|charging input| tp
 ```
 Only the positive rail is switched; charging works regardless of switch position.
 

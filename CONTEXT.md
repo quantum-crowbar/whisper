@@ -12,11 +12,21 @@ microSD card, syncs to an Android app over Bluetooth Low Energy, and transcribes
 on-device with whisper.cpp. No server, no cloud, no WiFi. Housed in a custom
 3D-printed card-shaped enclosure.
 
-```
-  ESP32-S3-Zero puck                 Android app (Kotlin + Compose)
-  I2S mic → 16kHz mono WAV → SD  BLE  BLE client → pull WAV (chunked)
-  record button / OLED status  ─────▶ whisper.cpp on-device (small/medium)
-  BLE GATT server (sync)             Room DB + FTS search, notes, export
+```mermaid
+flowchart LR
+    subgraph Puck["ESP32-S3-Zero puck"]
+        mic[I2S mic → 16kHz mono WAV → SD]
+        io[Record button / OLED status]
+        ble[BLE GATT server]
+    end
+    subgraph App["Android app (Kotlin + Compose)"]
+        client[BLE client → pull WAV chunked]
+        whisper[whisper.cpp on-device<br/>small / medium]
+        db[(Room DB + FTS)]
+        notes[Notes: list / search / export]
+        client --> whisper --> db --> notes
+    end
+    Puck -->|BLE| App
 ```
 
 **Defining constraint:** everything stays on-device. This is what distinguishes it

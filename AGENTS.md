@@ -10,12 +10,12 @@ Operating contract for AI assistants working in this repo. Project facts live in
 Baseline behavior comes from the **quantum-basics** submodule at
 [quantum-basics/](quantum-basics/). This file layers project specifics on top.
 
-```
-quantum-basics/rules/     ← cross-project defaults (lowest priority)
-    ↓ inherited by
-AGENTS.md  (this file)    ← project-level rules & overrides
-    ↓ inherited by
-<subdir>/AGENTS.md        ← subdirectory overrides (highest priority)
+```mermaid
+flowchart TD
+    QB["quantum-basics/rules/<br/>cross-project defaults — lowest priority"]
+    AG["AGENTS.md (this file)<br/>project-level rules & overrides"]
+    SUB["&lt;subdir&gt;/AGENTS.md<br/>subdirectory overrides — highest priority"]
+    QB -->|inherited by| AG -->|inherited by| SUB
 ```
 
 Any quantum-basics rule applies unless explicitly overridden below. On conflict:
@@ -36,7 +36,9 @@ subdir > this file > quantum-basics > common sense.
 | Communication style | [rules/communication.md](quantum-basics/rules/communication.md) | Always — governs every response |
 | Workflow & git | [rules/workflow.md](quantum-basics/rules/workflow.md) | Always — governs task execution |
 | Coding standards | [rules/coding-standards.md](quantum-basics/rules/coding-standards.md) | Any code change |
+| Diagrams | [rules/diagrams.md](quantum-basics/rules/diagrams.md) | Any diagram — always Mermaid, never ASCII |
 | Decision-making | [rules/decision-making.md](quantum-basics/rules/decision-making.md) | Trade-off calls *(planned v0.2 — apply §5 here until it lands)* |
+| Optional hooks | [hooks/README.md](quantum-basics/hooks/README.md) | On attach — ask which to enable; see §7 |
 | Rules index / priority | [rules/_index.md](quantum-basics/rules/_index.md) | Resolving rule conflicts |
 | Language/tool/env prefs | [preferences/_index.md](quantum-basics/preferences/_index.md) | Choosing versions/tools *(planned v0.2)* |
 | Reusable patterns | [patterns/_index.md](quantum-basics/patterns/_index.md) | Error handling, testing, docs structure *(planned v0.2)* |
@@ -68,6 +70,11 @@ The full text is authoritative; this is the fast reference.
 - Incremental: small commits, working features over complete systems, show progress.
 - Prefer parallel/bulk tool use; don't re-read unchanged files.
 
+**Diagrams** ([source](quantum-basics/rules/diagrams.md))
+- Every diagram is a fenced ` ```mermaid ` block — no ASCII art, no image tools.
+- Right type for the job: `flowchart`, `sequenceDiagram`, `stateDiagram-v2`, `erDiagram`.
+- Convert any ASCII diagram to Mermaid when you touch its file.
+
 **Coding standards** ([source](quantum-basics/rules/coding-standards.md))
 - Clarity over cleverness; explicit over implicit; follow surrounding style.
 - Descriptive names, small focused functions, early returns, shallow nesting.
@@ -91,10 +98,22 @@ For any task over ~3 steps (features, refactors, migrations, multi-step fixes), 
 the [todo-workflow skill](quantum-basics/skills/todo-workflow/README.md) as the
 concrete procedure. It's a state machine:
 
-```
-INIT → PICK_ITEM → EXECUTE → TEST ─pass─→ REVIEW_GATE → COMMIT_GATE → PICK_ITEM
-                     │                                                     │
-                    fail → RETRY (≤ max_cycles) → ESCALATE            COMMIT → FINISH
+```mermaid
+stateDiagram-v2
+    [*] --> INIT
+    INIT --> PICK_ITEM
+    PICK_ITEM --> EXECUTE
+    EXECUTE --> TEST
+    TEST --> REVIEW_GATE: pass
+    TEST --> RETRY: fail
+    RETRY --> TEST: retry ≤ max_cycles
+    RETRY --> ESCALATE: exhausted
+    REVIEW_GATE --> COMMIT_GATE
+    COMMIT_GATE --> COMMIT: every N items
+    COMMIT_GATE --> PICK_ITEM: accumulate
+    COMMIT --> PICK_ITEM
+    PICK_ITEM --> FINISH: no items left
+    FINISH --> [*]
 ```
 
 - Full procedure: [workflow.md](quantum-basics/skills/todo-workflow/workflow.md)
@@ -128,6 +147,11 @@ failure modes before endorsing.
 Overrides that win over quantum-basics defaults in this repo:
 - **No auto-push.** This repo has no git remote. Commit locally; ask before adding a
   remote or pushing (`push=false` in todo-workflow).
+- **No AI metadata in commits.** The `no-ai-metadata` hook is enabled here (see §7) —
+  do NOT add `Co-Authored-By: Claude` or "Generated with Claude Code" trailers. The
+  `commit-msg` hook strips them as a backstop, but don't write them in the first place.
+- **Mermaid only for diagrams** — per [rules/diagrams.md](quantum-basics/rules/diagrams.md),
+  already applied across README/CONTEXT/specs/this file.
 - **Hardware reality gates firmware.** Firmware v0.1 is unvalidated on hardware — never
   claim a firmware feature "works"; say "written, not yet flashed" (see CONTEXT.md).
 - **Privacy is non-negotiable.** No cloud, no server, no telemetry, no network calls in
@@ -150,5 +174,21 @@ Match quantum-basics coding standards, specialized per component (details in CON
 
 ---
 
+## 7. Enabled optional hooks
+
+Chosen when quantum-basics was attached (see the
+[attach protocol](quantum-basics/hooks/README.md)):
+
+| Hook | State | Enforcement |
+|---|---|---|
+| `no-ai-metadata` | **enabled** | `commit-msg` hook at [.githooks/commit-msg](.githooks/commit-msg), activated via `git config core.hooksPath .githooks` |
+
+After cloning, each collaborator must run `git config core.hooksPath .githooks` once to
+activate the hook locally (hook config is per-clone; the script itself is committed).
+To change hook choices, say "change hooks".
+
+---
+
 **Bottom line:** read CONTEXT.md for *what*, follow quantum-basics for *how*, use
-todo-workflow for anything multi-step, keep everything on-device, and don't push without asking.
+todo-workflow for anything multi-step, diagrams are Mermaid, keep everything on-device,
+no AI trailers in commits, and don't push without asking.

@@ -40,11 +40,12 @@ Short press = record toggle; long press = sync mode (planned).
 
 ## Power chain
 
-```
-LiPo (JST) → TP4056 B+/B−
-TP4056 OUT+ → slide switch → ESP32-S3-Zero 5V
-TP4056 OUT− → ESP32-S3-Zero GND (direct, not through switch)
-TP4056 USB-C → charging input (independent of the ESP32's own USB-C)
+```mermaid
+flowchart LR
+    lipo["LiPo (JST)"] -->|B+/B−| tp[TP4056]
+    tp -->|OUT+| sw[Slide switch] -->|5V| esp[ESP32-S3-Zero]
+    tp -->|"OUT− (direct, not switched)"| esp
+    charge["USB-C charger"] -->|charging input| tp
 ```
 
 Only the positive rail is switched; charging works regardless of switch position.

@@ -5,11 +5,21 @@ microSD card, syncs to an Android app over Bluetooth Low Energy, and transcribes
 on-device with whisper.cpp. **No server, no cloud, fully private.** Housed in a
 custom 3D-printed card-shaped enclosure.
 
-```
-  ESP32-S3-Zero puck                 Android app (Kotlin + Compose)
-  I2S mic → 16kHz WAV → SD    BLE    BLE client → pull WAV
-  record button / OLED      ─────▶   whisper.cpp on-device
-  BLE GATT server (sync)             Room DB + FTS search, export
+```mermaid
+flowchart LR
+    subgraph Puck["ESP32-S3-Zero puck"]
+        mic[I2S mic → 16kHz mono WAV → SD]
+        io[Record button / OLED]
+        ble[BLE GATT server]
+    end
+    subgraph App["Android app (Kotlin + Compose)"]
+        client[BLE client → pull WAV chunked]
+        whisper[whisper.cpp on-device]
+        db[(Room DB + FTS)]
+        notes[Notes: search / export]
+        client --> whisper --> db --> notes
+    end
+    Puck -->|BLE| App
 ```
 
 The full design — hardware BOM, pinout, firmware status, app architecture, and
@@ -27,6 +37,18 @@ roadmap — lives in **[specs.md](specs.md)**.
 | [specs.md](specs.md) | Master specification (single source of truth) |
 | [AGENTS.md](AGENTS.md) | How AI assistants should work in this repo |
 | [CONTEXT.md](CONTEXT.md) | Distilled project context for agents |
+
+## Working in this repo
+
+Agent rules and project context: see [AGENTS.md](AGENTS.md) and [CONTEXT.md](CONTEXT.md).
+
+After cloning, activate the commit hook (strips AI attribution from commits) and pull
+the submodule:
+
+```sh
+git submodule update --init
+git config core.hooksPath .githooks
+```
 
 ## Status
 
