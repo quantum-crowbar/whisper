@@ -3,6 +3,7 @@
 Design docs and notes. The master specification is [../specs.md](../specs.md).
 
 - [roadmap.md](roadmap.md) — phases, dependencies, critical path, blockers, milestones
+- [devlog/](devlog/) — running log of development work and hardware photos
 
 ## Open questions
 - CAD tool preference for the enclosure
