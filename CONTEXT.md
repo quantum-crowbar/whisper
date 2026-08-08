@@ -63,9 +63,9 @@ Peripherals (all wired per [hardware/pinout.md](hardware/pinout.md)):
 - Record button → GPIO2, `INPUT_PULLUP` (short = record, long = sync, planned)
 - Power: LiPo → TP4056 → slide switch → ESP32 5V; charging independent of switch
 
-**Pending purchase:** microSD card, LiPo battery. **Have:** everything else.
-`pinout.md` is the wiring contract — treat GPIO assignments as fixed unless the user
-changes them there.
+**Pending purchase:** microSD card, LiPo battery. **Have:** everything else. Full parts
+list in [hardware/bom.md](hardware/bom.md). `pinout.md` is the wiring contract — treat
+GPIO assignments as fixed unless the user changes them there.
 
 ---
 
