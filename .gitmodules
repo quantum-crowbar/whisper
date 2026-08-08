@@ -1,0 +1,3 @@
+[submodule "quantum-basics"]
+	path = quantum-basics
+	url = git@github.com:quantum-crowbar/quantum-basics.git

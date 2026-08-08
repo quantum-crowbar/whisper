@@ -23,7 +23,10 @@ roadmap — lives in **[specs.md](specs.md)**.
 | [android/](android/) | Android app (Kotlin + Jetpack Compose) |
 | [hardware/](hardware/) | [Pinout](hardware/pinout.md) + [enclosure](hardware/enclosure/) CAD/STLs |
 | [docs/](docs/) | Additional design docs |
+| [quantum-basics/](quantum-basics/) | Submodule — agent rules/preferences/skills |
 | [specs.md](specs.md) | Master specification (single source of truth) |
+| [AGENTS.md](AGENTS.md) | How AI assistants should work in this repo |
+| [CONTEXT.md](CONTEXT.md) | Distilled project context for agents |
 
 ## Status
 
