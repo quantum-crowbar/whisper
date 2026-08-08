@@ -1,0 +1,35 @@
+# ---- Firmware: PlatformIO / Arduino ----
+firmware/.pio/
+firmware/.pioenvs/
+firmware/.piolibdeps/
+firmware/build/
+*.elf
+*.bin
+*.hex
+
+# ---- Android / Gradle ----
+android/.gradle/
+android/build/
+android/**/build/
+android/local.properties
+android/.idea/
+android/captures/
+android/app/release/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# ---- CAD / enclosure (keep sources, ignore heavy exports as needed) ----
+# Uncomment if STL exports get large and are regenerated from source CAD:
+# hardware/enclosure/*.stl
+
+# ---- Editors / OS ----
+.vscode/
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+*.swp
+
+# ---- Misc ----
+*.log
