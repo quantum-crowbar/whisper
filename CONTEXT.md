@@ -116,6 +116,8 @@ dimensions before finalizing CAD. CAD tool TBD.
 
 ## Roadmap (current: Phase 0–1)
 
+Working roadmap with dependencies, blockers, and milestones: [docs/roadmap.md](docs/roadmap.md).
+
 - **Phase 0** — Hardware bring-up *(in progress; SD card + LiPo pending, then solder & bench-test)*
 - **Phase 1** — Base firmware *(v0.1 written; flash & validate on hardware next; add battery %)*
 - **Phase 2** — BLE sync *(BLE-only resolved; GATT file list + chunked transfer + MTU + long-press sync)*

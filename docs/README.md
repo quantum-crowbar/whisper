@@ -2,6 +2,8 @@
 
 Design docs and notes. The master specification is [../specs.md](../specs.md).
 
+- [roadmap.md](roadmap.md) — phases, dependencies, critical path, blockers, milestones
+
 ## Open questions
 - CAD tool preference for the enclosure
 - Whether the mic needs a felt/mesh dust cover behind its acoustic port
