@@ -1,4 +1,9 @@
-# Pocket Voice Recorder
+# [WIP] Pocket Voice Recorder
+
+> **Work in progress.** Nothing here has been fully validated on physical hardware yet —
+> firmware is unflashed, the app is unbuilt, and the enclosure is unprinted. The `[WIP]`
+> marker and these notices will be removed once first tested versions of everything are
+> in my hands physically.
 
 A pocket-sized, fully offline voice recorder. An ESP32-S3 puck captures audio to a
 microSD card, syncs to an Android app over Bluetooth Low Energy, and transcribes
