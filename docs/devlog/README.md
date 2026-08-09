@@ -27,6 +27,26 @@ Keep entries short. This is a log, not a report — a couple of sentences and a 
 
 ## Log
 
+## 2026-08-09 — Inventory check + power chain assembled
+
+**Phase:** 0 · **Status:** power chain soldered and verified working
+
+Checked the inventory and confirmed the whole BOM is accounted for, then roughly
+assembled the power chain — a quick bit of soldering done while supporting my son's
+drawing session. Power chain works.
+
+The fun part: today's work was so simple and straightforward that it got *messy* when
+it didn't seem to work — I had no output power. After desoldering and resoldering 2–3
+times, I realized one of the multimeter cables (the ground one) was slightly loose,
+pulled out just enough to not measure. The power chain had been fine the whole time; the
+measurement was the problem.
+
+![Inventory laid out](assets/2026-08-09-inventory.jpg)
+![BOM check](assets/2026-08-09-bom.jpg)
+![ESP32-S3-Zero](assets/2026-08-09-esp32-s3-zero.jpg)
+![Power chain working](assets/2026-08-09-power-chain-working.jpg)
+![The culprit — loose multimeter ground plug](assets/2026-08-09-multimeter-cable-plugs.jpg)
+
 ## 2026-08-08 — Repo bootstrapped
 
 **Phase:** 0–1 · **Status:** docs/scaffolding only, no hardware work logged yet
