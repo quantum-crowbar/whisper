@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whisper devlog</title>
+<meta name="description" content="Build log for a pocket voice recorder — ESP32-S3, I2S mic, microSD, OLED. Hardware bring-up, bench tests, dead ends, decisions.">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><circle cx='9' cy='16' r='5' fill='%237C3AED'/></svg>">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1><a href="./">whisper <span class="tag">devlog</span></a></h1>
+    <p>Build log for a pocket voice recorder — ESP32-S3, I2S mic, microSD, OLED.
+       Hardware bring-up, bench tests, dead ends, decisions.</p>
+  </div>
+</header>
+
+<div class="device-bar"></div>
+
+<main>
+  <div class="wrap">
+
+<!-- ============ newest entry goes directly below this line ============ -->
+
+<article id="2026-09-06">
+  <h2><a href="#2026-09-06">First device sketch — layout, block diagram, enclosure section</a></h2>
+  <p class="meta"><span class="d">2026-09-06</span> · <span class="k">phase</span> 0 · <span class="k">status</span> paper only — no change to the hardware</p>
+
+  <p>Sat down with the Supernote and drew the thing rather than describing it. Three passes on
+  one page: the outside, the wiring, and the inside.</p>
+
+  <p><strong>Outside.</strong> A puck. Mic grille and the record button on the top face, display
+  next to them, and everything else pushed to one side edge — USB-C for charge, the microSD
+  slot, and the slide switch (drawn out in the callout, since it's the one control you operate
+  without looking).</p>
+
+  <p><strong>Block diagram.</strong> USB-C → charger → cell → boost → switch → S3 → display, with
+  the mic branching off the S3 one way and the microSD the other. This is just the chain from
+  yesterday's bench wiring, on paper — no surprises, which is the point of drawing it.</p>
+
+  <p><strong>Inside.</strong> A section through the case: board over the battery compartment,
+  mic port at the top, and an arrow for how the two halves come apart. The stack is taller than
+  I'd like — the boost module is the part making it so.</p>
+
+  <p>Next: OLED I2C lines, then the mic, then the first bench-test — unchanged.</p>
+
+  <a class="shot" href="devlog/assets/full/2026-09-06-device-sketch.jpg">
+    <img src="devlog/assets/2026-09-06-device-sketch.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+         alt="Supernote sketch — device pictorial with mic, record button and display labelled; power/signal block diagram; section through the enclosure">
+  </a>
+</article>
+
+<article id="2026-09-05">
+  <h2><a href="#2026-09-05">Boost converter, OLED power, and record button wired</a></h2>
+  <p class="meta"><span class="d">2026-09-05</span> · <span class="k">phase</span> 0 · <span class="k">status</span> power rail feeds the S3; OLED powered; button on GPIO1</p>
+
+  <p>Added a 3.3V→5V boost converter between the TP4056 and the ESP32-S3-Zero. The TP4056's
+  output is just raw cell voltage (~3.0–4.2V), which is too low to feed the S3's 5V pin and
+  too high to safely feed 3V3 directly — the boost module resolves both. The slide switch
+  now sits on the positive line between the TP4056 and the booster, so it gates the whole
+  converter rather than just the board.</p>
+
+  <p>Grounds: booster GND runs to the S3 and to the OLED. The OLED's VCC comes off the S3's
+  3V3 pin (i.e. the S3's own regulator powers the screen, not the booster). OLED data lines
+  (SDA/SCL) aren't run yet.</p>
+
+  <p>Record button is in: microswitch between GND and <strong>GPIO1</strong>, not GPIO2 as
+  originally speced. GPIO1 is not a strapping pin on the S3, so it's a fine choice — docs
+  updated to match the hardware rather than the other way round.</p>
+
+  <p>Next: OLED I2C lines, then the mic, then the first bench-test.</p>
+
+  <a class="shot" href="devlog/assets/full/2026-09-05-bench-wiring.jpg">
+    <img src="devlog/assets/2026-09-05-bench-wiring.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+         alt="Bench wiring — TP4056, boost converter, S3, and the button on perfboard">
+  </a>
+</article>
+
+<article id="2026-08-09">
+  <h2><a href="#2026-08-09">Inventory check + power chain assembled</a></h2>
+  <p class="meta"><span class="d">2026-08-09</span> · <span class="k">phase</span> 0 · <span class="k">status</span> power chain soldered and verified working</p>
+
+  <p>Checked the inventory and confirmed the whole BOM is accounted for, then roughly
+  assembled the power chain — a quick bit of soldering done while supporting my son's
+  drawing session. Power chain works.</p>
+
+  <p>The fun part: today's work was so simple and straightforward that it got <em>messy</em>
+  when it didn't seem to work — I had no output power. After desoldering and resoldering 2–3
+  times, I realized one of the multimeter cables (the ground one) was slightly loose, pulled
+  out just enough to not measure. The power chain had been fine the whole time; the
+  measurement was the problem.</p>
+
+  <a class="shot" href="devlog/assets/full/2026-08-09-inventory.jpg">
+    <img src="devlog/assets/2026-08-09-inventory.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Inventory laid out">
+  </a>
+  <a class="shot" href="devlog/assets/full/2026-08-09-bom.jpg">
+    <img src="devlog/assets/2026-08-09-bom.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="BOM check">
+  </a>
+  <a class="shot" href="devlog/assets/full/2026-08-09-esp32-s3-zero.jpg">
+    <img src="devlog/assets/2026-08-09-esp32-s3-zero.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="ESP32-S3-Zero">
+  </a>
+  <a class="shot" href="devlog/assets/full/2026-08-09-power-chain-working.jpg">
+    <img src="devlog/assets/2026-08-09-power-chain-working.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Power chain working">
+  </a>
+  <a class="shot" href="devlog/assets/full/2026-08-09-multimeter-cable-plugs.jpg">
+    <img src="devlog/assets/2026-08-09-multimeter-cable-plugs.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="The culprit — loose multimeter ground plug">
+  </a>
+</article>
+
+<article id="2026-08-08">
+  <h2><a href="#2026-08-08">Repo bootstrapped</a></h2>
+  <p class="meta"><span class="d">2026-08-08</span> · <span class="k">phase</span> 0–1 · <span class="k">status</span> docs/scaffolding only, no hardware work logged yet</p>
+
+  <p>Set up the repo from the spec: firmware/android/hardware/docs scaffold, pinout, BOM,
+  roadmap, and agent docs. quantum-basics attached as a submodule. No soldering or
+  bench-testing done yet — puck parts are in hand except the microSD card and LiPo
+  (pending purchase). First hardware entry will land once headers are soldered and the
+  mic/OLED/button bench-test runs.</p>
+</article>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="https://github.com/quantum-crowbar/whisper">source on github</a>
+  </div>
+</footer>
+
+</body>
+</html>
