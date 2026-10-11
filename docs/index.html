@@ -27,12 +27,13 @@
 
 <article id="2026-10-11">
   <h2><a href="#2026-10-11">Full assembly soldered, pins re-planned</a></h2>
-  <p class="meta"><span class="d">2026-10-11</span> · <span class="k">phase</span> 0 · <span class="k">status</span> everything soldered; nothing bench-tested yet</p>
+  <p class="meta"><span class="d">2026-10-11</span> · <span class="k">phase</span> 0 · <span class="k">status</span> everything soldered; smoke test and power rails passed, peripherals not yet validated</p>
 
-  <p>The whole puck is now soldered together: LiPo → TP4056 → slide switch → BS02 V4 boost →
-  S3, with the OLED, mic, microSD reader and record button all wired to the S3. It has not
-  been powered up on the battery, and the SD reader has no card in it, so none of this is
-  validated yet.</p>
+  <p>The whole circuit is now soldered together: LiPo → TP4056 → slide switch → BS02 V4 boost → S3, with the OLED, mic, microSD reader and record button all wired to the S3.</p>
+
+  <p>I powered it up on the battery and tested charging; both work. The smoke test was clean and the output voltages measured as expected.</p>
+
+  <p>I am yet to validate the functionality of the SD reader, mic and OLED display.</p>
 
   <p>Wiring the full set exposed that the pin plan on paper wasn't the one I actually wanted.
   The microSD reader moved from GPIO7–10 to <strong>GPIO10–13</strong> and the OLED from
@@ -41,18 +42,11 @@
   mic on GPIO4/5/6. One consequence: the v0.1 sketch was written against the old pins and
   has to be re-pinned before the first flash.</p>
 
-  <p>The boost converter is a BS02 V4, with its A/B solder pads set for 5V (the silkscreen
-  has the jumper table). The mic, OLED and SD reader all run off the S3's 3V3 pin, with the
-  OLED's ground taken from the booster. The slide switch sits on the TP4056's OUT+ line
+  <p>The boost converter is a BS02 V4, with its A/B solder pads set for 5V (the silkscreen has the jumper table). The mic, OLED and SD reader all run off the S3's 3V3 pin, with the OLED's ground taken from the booster. The slide switch sits on the TP4056's OUT+ line
   upstream of the booster, so charging works with the device switched off.</p>
 
   <p>The full map is in the diagram below: every GPIO, both rails, and the power chain. The
   matching tables are in <code>hardware/pinout.md</code>.</p>
-
-  <p>Before first power-up, in order: measure the booster's output for 5V and check the A/B
-  bridges under magnification; check the Waveshare schematic for what happens when USB-C is
-  plugged in while the booster is driving the 5V pin; then re-pin and flash the sketch. If
-  the SD card is flaky when it arrives, the reader may need 5V instead of 3V3.</p>
 
   <a class="shot" href="devlog/assets/full/2026-10-11-wiring-diagram.jpg">
     <img src="devlog/assets/2026-10-11-wiring-diagram.jpg" width="1600" height="1058" loading="lazy" decoding="async"
