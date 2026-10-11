@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1190" width="1800" height="1190">
+<style>
+text{font-family:Helvetica,Arial,sans-serif;fill:#212121}
+.bt{font-size:15px;font-weight:700}.st{font-size:12px;fill:#455a64}
+.pt{font-size:13px;font-weight:600}.wl{font-size:12px;fill:#212121}
+.nt{font-size:13px;font-weight:700}.ti{font-size:20px;font-weight:700}
+.per{fill:#e8f5e9;stroke:#2e7d32;stroke-width:2}
+.mod{fill:#e3f2fd;stroke:#1565c0;stroke-width:2}
+.mcu{fill:#ede7f6;stroke:#5e35b1;stroke-width:3}
+.pin{fill:#fff8e1;stroke:#8d6e63;stroke-width:2}
+.rsv{fill:#f5f5f5;stroke:#9e9e9e;stroke-width:1.5;stroke-dasharray:6 4}
+</style>
+<rect width="1800" height="1190" fill="#fff"/>
+<text x="20" y="32" class="ti">voice recorder/note taker prototype circuit</text>
+<path d="M400,150 V70 H950 V150" fill="none" stroke="#ef6c00" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="385.1" y="118" width="29.799999999999997" height="18" fill="#fff"/><text x="400" y="132" class="wl" text-anchor="middle">VDD</text>
+<text x="950" y="140" class="wl" text-anchor="start" dx="6">VCC</text>
+<path d="M230,70 H400" fill="none" stroke="#ef6c00" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M230,70 V835" fill="none" stroke="#ef6c00" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M500,835 H230" fill="none" stroke="#ef6c00" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="350.1" y="825" width="29.799999999999997" height="18" fill="#fff"/><text x="365" y="839" class="wl" text-anchor="middle">VCC</text>
+<path d="M265,530 H230" fill="none" stroke="#ef6c00" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M520,150 V110 H942 a8,8 0 0 1 16,0 H1570 V1000" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<text x="528" y="138" class="wl">GND + L/R</text>
+<path d="M1150,150 V110" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<text x="1158" y="138" class="wl">GND</text>
+<path d="M1400,150 V110" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<text x="1408" y="138" class="wl">leg B</text>
+<path d="M1100,835 H1302 a8,8 0 0 1 16,0 H1570" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1435.1" y="825" width="29.799999999999997" height="18" fill="#fff"/><text x="1450" y="839" class="wl" text-anchor="middle">GND</text>
+<path d="M1535,530 H1570" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M1430,1000 H1570" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1481.8" y="990" width="36.4" height="18" fill="#fff"/><text x="1500" y="1004" class="wl" text-anchor="middle">OUT−</text>
+<path d="M400,260 V456" fill="none" stroke="#1565c0" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="362.0" y="348" width="76.0" height="18" fill="#fff"/><text x="400" y="362" class="wl" text-anchor="middle">SCK (BCLK)</text>
+<path d="M500,260 V456" fill="none" stroke="#1565c0" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="462.0" y="348" width="76.0" height="18" fill="#fff"/><text x="500" y="362" class="wl" text-anchor="middle">WS (LRCLK)</text>
+<path d="M600,260 V456" fill="none" stroke="#1565c0" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="565.3" y="348" width="69.4" height="18" fill="#fff"/><text x="600" y="362" class="wl" text-anchor="middle">SD (DOUT)</text>
+<path d="M960,260 V456" fill="none" stroke="#2e7d32" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="945.1" y="348" width="29.799999999999997" height="18" fill="#fff"/><text x="960" y="362" class="wl" text-anchor="middle">SDA</text>
+<path d="M1100,260 V456" fill="none" stroke="#2e7d32" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1085.1" y="348" width="29.799999999999997" height="18" fill="#fff"/><text x="1100" y="362" class="wl" text-anchor="middle">SCL</text>
+<path d="M1340,260 V456" fill="none" stroke="#00838f" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1269.0" y="348" width="142.0" height="18" fill="#fff"/><text x="1340" y="362" class="wl" text-anchor="middle">leg A (INPUT_PULLUP)</text>
+<path d="M600,604 V780" fill="none" stroke="#6a1b9a" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="588.4" y="680" width="23.2" height="18" fill="#fff"/><text x="600" y="694" class="wl" text-anchor="middle">CS</text>
+<path d="M700,604 V780" fill="none" stroke="#6a1b9a" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="681.8" y="680" width="36.4" height="18" fill="#fff"/><text x="700" y="694" class="wl" text-anchor="middle">MOSI</text>
+<path d="M800,604 V780" fill="none" stroke="#6a1b9a" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="785.1" y="680" width="29.799999999999997" height="18" fill="#fff"/><text x="800" y="694" class="wl" text-anchor="middle">SCK</text>
+<path d="M900,604 V780" fill="none" stroke="#6a1b9a" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="881.8" y="680" width="36.4" height="18" fill="#fff"/><text x="900" y="694" class="wl" text-anchor="middle">MISO</text>
+<path d="M710,1000 H800" fill="none" stroke="#d32f2f" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="726.9" y="990" width="56.199999999999996" height="18" fill="#fff"/><text x="755" y="1004" class="wl" text-anchor="middle">B+ / B−</text>
+<path d="M970,985 H1060" fill="none" stroke="#d32f2f" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="996.8" y="975" width="36.4" height="18" fill="#fff"/><text x="1015" y="989" class="wl" text-anchor="middle">OUT+</text>
+<path d="M1170,985 H1260" fill="none" stroke="#d32f2f" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1200.1" y="975" width="29.799999999999997" height="18" fill="#fff"/><text x="1215" y="989" class="wl" text-anchor="middle">IN+</text>
+<path d="M930,1040 V1075 H1330 V1040" fill="none" stroke="#455a64" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1016.1" y="1065" width="227.79999999999998" height="18" fill="#fff"/><text x="1130" y="1079" class="wl" text-anchor="middle">OUT− → IN− (direct, not switched)</text>
+<path d="M885,1100 V1040" fill="none" stroke="#795548" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="853.6" y="1060" width="62.8" height="18" fill="#fff"/><text x="885" y="1074" class="wl" text-anchor="middle">USB-C IN</text>
+<path d="M1310,960 V604" fill="none" stroke="#e53935" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="1281.9" y="890" width="56.199999999999996" height="18" fill="#fff"/><text x="1310" y="904" class="wl" text-anchor="middle">OUT+ 5V</text>
+<rect x="330" y="150" width="450" height="110" rx="6" class="per"/>
+<text x="555.0" y="197.0" class="bt" text-anchor="middle">I2S MEMS MIC</text>
+<text x="555.0" y="215.0" class="st" text-anchor="middle">VDD · GND · L/R · SCK · WS · SD</text>
+<rect x="900" y="150" width="300" height="110" rx="6" class="per"/>
+<text x="1050.0" y="197.0" class="bt" text-anchor="middle">SSD1306 OLED 128×64 @0x3C</text>
+<text x="1050.0" y="215.0" class="st" text-anchor="middle">VCC · GND · SDA · SCL</text>
+<rect x="1280" y="150" width="170" height="110" rx="6" class="per"/>
+<text x="1365.0" y="197.0" class="bt" text-anchor="middle">RECORD BUTTON</text>
+<text x="1365.0" y="215.0" class="st" text-anchor="middle">4-pin tactile</text>
+<text x="1365.0" y="230.0" class="st" text-anchor="middle">leg A · diagonal leg B</text>
+<rect x="500" y="780" width="600" height="110" rx="6" class="per"/>
+<text x="800.0" y="827.0" class="bt" text-anchor="middle">microSD READER (SPI)</text>
+<text x="800.0" y="845.0" class="st" text-anchor="middle">VCC · GND · CS · MOSI · SCK · MISO</text>
+<rect x="300" y="470" width="1200" height="120" rx="10" class="mcu"/>
+<text x="900" y="525" class="bt" text-anchor="middle" style="font-size:20px">WAVESHARE ESP32-S3-ZERO</text>
+<text x="900" y="550" class="st" text-anchor="middle">onboard LDO → 3V3 · native USB-C · top row: GPIO1, 4, 5, 6, 8, 9 · bottom row: GPIO10–13, 5V</text>
+<rect x="358.0" y="456" width="84" height="28" rx="4" class="pin"/><text x="400" y="475" class="pt" text-anchor="middle">GPIO4</text>
+<rect x="458.0" y="456" width="84" height="28" rx="4" class="pin"/><text x="500" y="475" class="pt" text-anchor="middle">GPIO5</text>
+<rect x="558.0" y="456" width="84" height="28" rx="4" class="pin"/><text x="600" y="475" class="pt" text-anchor="middle">GPIO6</text>
+<rect x="918.0" y="456" width="84" height="28" rx="4" class="pin"/><text x="960" y="475" class="pt" text-anchor="middle">GPIO8</text>
+<rect x="1058.0" y="456" width="84" height="28" rx="4" class="pin"/><text x="1100" y="475" class="pt" text-anchor="middle">GPIO9</text>
+<rect x="1298.0" y="456" width="84" height="28" rx="4" class="pin"/><text x="1340" y="475" class="pt" text-anchor="middle">GPIO1</text>
+<rect x="558.0" y="576" width="84" height="28" rx="4" class="pin"/><text x="600" y="595" class="pt" text-anchor="middle">GPIO10</text>
+<rect x="658.0" y="576" width="84" height="28" rx="4" class="pin"/><text x="700" y="595" class="pt" text-anchor="middle">GPIO11</text>
+<rect x="758.0" y="576" width="84" height="28" rx="4" class="pin"/><text x="800" y="595" class="pt" text-anchor="middle">GPIO12</text>
+<rect x="858.0" y="576" width="84" height="28" rx="4" class="pin"/><text x="900" y="595" class="pt" text-anchor="middle">GPIO13</text>
+<rect x="1268.0" y="576" width="84" height="28" rx="4" class="pin"/><text x="1310" y="595" class="pt" text-anchor="middle">5V</text>
+<rect x="265.0" y="516" width="70" height="28" rx="4" class="pin"/><text x="300" y="535" class="pt" text-anchor="middle">3V3</text>
+<rect x="1465.0" y="516" width="70" height="28" rx="4" class="pin"/><text x="1500" y="535" class="pt" text-anchor="middle">GND</text>
+<circle cx="230" cy="530" r="9" fill="#212121"/><text x="216" y="535" class="nt" text-anchor="end">3V3 NET</text>
+<circle cx="1570" cy="530" r="9" fill="#212121"/><text x="1584" y="535" class="nt" text-anchor="start">GND NET</text>
+<rect x="560" y="960" width="150" height="80" rx="6" class="mod"/>
+<text x="635.0" y="992.0" class="bt" text-anchor="middle">LiPo 3.7V 400mAh</text>
+<text x="635.0" y="1010.0" class="st" text-anchor="middle">602530 · JST-PH</text>
+<rect x="800" y="960" width="170" height="80" rx="6" class="mod"/>
+<text x="885.0" y="992.0" class="bt" text-anchor="middle">TP4056 (ZX-006)</text>
+<text x="885.0" y="1010.0" class="st" text-anchor="middle">charge / protect</text>
+<rect x="1060" y="960" width="110" height="80" rx="6" class="mod"/>
+<text x="1115.0" y="992.0" class="bt" text-anchor="middle">Slide switch</text>
+<text x="1115.0" y="1010.0" class="st" text-anchor="middle">3-pin, on OUT+</text>
+<rect x="1260" y="960" width="170" height="80" rx="6" class="mod"/>
+<text x="1345.0" y="992.0" class="bt" text-anchor="middle">BS02 V4 boost</text>
+<text x="1345.0" y="1010.0" class="st" text-anchor="middle">A/B jumpers = 5V</text>
+<rect x="800" y="1100" width="170" height="50" rx="6" class="mod"/>
+<text x="885.0" y="1130.0" class="bt" text-anchor="middle">USB-C charger</text>
+<rect x="20" y="880" width="420" height="140" rx="6" class="rsv"/>
+<text x="36" y="905" class="bt">Reserved / avoid</text>
+<text x="36" y="928" class="st">GPIO0, 3, 45, 46 — strapping</text>
+<text x="36" y="946" class="st">GPIO19, 20 — USB D−/D+</text>
+<text x="36" y="964" class="st">GPIO21 — onboard WS2812 RGB LED</text>
+<text x="36" y="982" class="st">GPIO43, 44 — UART0 TX/RX</text>
+<text x="36" y="1000" class="st">GPIO33–37 — not exposed (octal PSRAM)</text>
+<text x="20" y="1060" class="st">Net view: all grounds are common. The OLED GND is physically soldered to the booster OUT−.</text>
+<text x="20" y="1078" class="st">Slide switch is on the OUT+ line only; charging works with the switch off.</text>
+<line x1="20" y1="1108" x2="48" y2="1108" stroke="#d32f2f" stroke-width="4"/><text x="56" y="1112" class="st">battery / switched</text>
+<line x1="160" y1="1108" x2="188" y2="1108" stroke="#e53935" stroke-width="4"/><text x="196" y="1112" class="st">5V</text>
+<line x1="300" y1="1108" x2="328" y2="1108" stroke="#ef6c00" stroke-width="4"/><text x="336" y="1112" class="st">3V3</text>
+<line x1="20" y1="1130" x2="48" y2="1130" stroke="#455a64" stroke-width="4"/><text x="56" y="1134" class="st">GND</text>
+<line x1="160" y1="1130" x2="188" y2="1130" stroke="#1565c0" stroke-width="4"/><text x="196" y="1134" class="st">I2S</text>
+<line x1="300" y1="1130" x2="328" y2="1130" stroke="#2e7d32" stroke-width="4"/><text x="336" y="1134" class="st">I2C</text>
+<line x1="20" y1="1152" x2="48" y2="1152" stroke="#6a1b9a" stroke-width="4"/><text x="56" y="1156" class="st">SPI</text>
+<line x1="160" y1="1152" x2="188" y2="1152" stroke="#00838f" stroke-width="4"/><text x="196" y="1156" class="st">button</text>
+<line x1="300" y1="1152" x2="328" y2="1152" stroke="#795548" stroke-width="4"/><text x="336" y="1156" class="st">USB-C</text>
+</svg>
