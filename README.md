@@ -27,6 +27,8 @@ flowchart LR
     Puck -->|BLE| App
 ```
 
+Build log with bench photos: **<https://quantum-crowbar.github.io/whisper/>**
+
 The full design — hardware BOM, pinout, firmware status, app architecture, and
 roadmap — lives in **[specs.md](specs.md)**.
 
