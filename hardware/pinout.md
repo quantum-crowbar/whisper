@@ -7,6 +7,8 @@ Silkscreen pin numbers are GPIO numbers directly.
 the as-built wiring (slide switch and GPIO1 button confirmed in place). If the hardware
 and this file disagree, fix the file and note it in the devlog.
 
+Full connection map (all GPIOs, rails, power chain): [wiring-diagram.md](wiring-diagram.md).
+
 ## GPIO summary
 
 | GPIO | Function | Peripheral |
