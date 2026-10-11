@@ -189,6 +189,9 @@ Board setting: "ESP32S3 Dev Module," USB CDC on boot enabled (for Serial over na
 - [ ] Deep sleep between recordings
 - [ ] Battery indicator refinement
 
+### Backlog — Open-sourcing (later)
+- [ ] Choose and apply licences (code / hardware / docs) — see [docs/roadmap.md](docs/roadmap.md#backlog--open-sourcing--later-not-tied-to-a-phase)
+
 ---
 
 ## 6. Suggested repo structure

@@ -114,3 +114,14 @@ all three deliverables — firmware, app, enclosure — are physically in hand (
 - [ ] VAD auto-record trigger
 - [ ] Deep sleep between recordings
 - [ ] Battery indicator refinement
+
+### Backlog — Open-sourcing · ⚪ (later, not tied to a phase)
+The repo is public but has no licence yet (all rights reserved by default). A draft is
+parked on the local branch `licensing` (Apache-2.0 code / CERN-OHL-P-2.0 hardware / CC BY
+4.0 writing, plus CONTRIBUTING.md); decisions needed before it lands:
+- [ ] Confirm the licence split — one permissive licence per kind of work, or something simpler
+- [ ] Confirm the copyright holder (legal name, or the `quantum-crowbar` org)
+- [ ] `quantum-basics` submodule is private: publish it with a licence, or drop it from the public repo
+- [ ] Audit third-party licences before distributing a built binary (whisper.cpp, Adafruit
+      libraries, Arduino-ESP32 core is LGPL)
+- [ ] Repo description + topics on GitHub; decide on a contribution policy
