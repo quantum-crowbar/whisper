@@ -65,8 +65,8 @@ Peripherals (all wired per [hardware/pinout.md](hardware/pinout.md)):
   independent of switch. All peripherals run off the S3's 3V3 pin.
 
 **Pending purchase:** microSD card. **Have:** everything else; full assembly soldered
-2026-10-11, not yet bench-tested. Full parts
-list in [hardware/bom.md](hardware/bom.md). `pinout.md` is the wiring contract — treat
+2026-10-11, power-up smoke test and rail voltages checked, peripherals not yet validated.
+Full parts list in [hardware/bom.md](hardware/bom.md). `pinout.md` is the wiring contract — treat
 GPIO assignments as fixed unless the user changes them there.
 
 ---
@@ -120,7 +120,7 @@ dimensions before finalizing CAD. CAD tool TBD.
 
 Working roadmap with dependencies, blockers, and milestones: [docs/roadmap.md](docs/roadmap.md).
 
-- **Phase 0** — Hardware bring-up *(in progress; assembly soldered, SD card pending, then bench-test)*
+- **Phase 0** — Hardware bring-up *(in progress; assembly soldered and powered up OK, SD card pending, then per-peripheral bench-test)*
 - **Phase 1** — Base firmware *(v0.1 written; flash & validate on hardware next; add battery %)*
 - **Phase 2** — BLE sync *(BLE-only resolved; GATT file list + chunked transfer + MTU + long-press sync)*
 - **Phase 3** — Android app *(GATT client → pull → whisper.cpp → Room/FTS → Notes)*

@@ -155,6 +155,7 @@ Board setting: "ESP32S3 Dev Module," USB CDC on boot enabled (for Serial over na
 - [x] Boost converter (BS02 V4, 5V) between TP4056 and S3; slide switch upstream of booster
 - [x] LiPo battery in hand (400mAh — under target, runtime TBD)
 - [x] Full assembly soldered, all peripherals wired (2026-10-11)
+- [x] Power-up smoke test on battery; charging and rail voltages measured (2026-10-11)
 - [ ] Bench-test each peripheral individually (I2S → SD → OLED → button → power)
 
 ### Phase 1 — Base firmware (v0.1 done)

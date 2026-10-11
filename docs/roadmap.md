@@ -81,7 +81,7 @@ all three deliverables — firmware, app, enclosure — are physically in hand (
 - [ ] ⛔ microSD card (pending purchase)
 - [x] LiPo battery in hand (400mAh — under target, runtime TBD)
 - [x] Full assembly soldered 2026-10-11: OLED I2C (GPIO8/9), mic (GPIO4/5/6), SD reader (GPIO10–13) ([pinout](../hardware/pinout.md))
-- [ ] Verify BS02 V4 outputs 5V (multimeter + jumper continuity) before first power-up on battery
+- [x] Power-up smoke test on battery; charging and rail voltages (incl. BS02 V4 5V output) measured 2026-10-11
 - [ ] Bench-test each peripheral individually: I2S → SD → OLED → button → power
 
 ### Phase 1 — Base firmware · 🟠 (v0.1 written, not flashed)
