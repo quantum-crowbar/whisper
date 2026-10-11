@@ -1,7 +1,7 @@
 # Hardware
 
 The recorder puck: an ESP32-S3-Zero with an I2S mic, SPI microSD reader, I2C OLED, a
-record button, and a TP4056/LiPo power chain.
+record button, and a TP4056 → boost → LiPo power chain.
 
 - [bom.md](bom.md) — bill of materials (parts, quantities, status)
 - [pinout.md](pinout.md) — wiring and GPIO assignments (the wiring contract)

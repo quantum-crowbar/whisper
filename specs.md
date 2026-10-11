@@ -40,9 +40,10 @@ No WiFi, no backend server — sync and transcription are fully local to the pho
 | microSD card | 16–32GB, Class 10 | ⏳ pending |
 | Display | 0.96" 128×64 I2C OLED (SSD1306, GND/VCC/SCL/SDA, addr 0x3C) | ✅ have |
 | Charge/protect | TP4056 with protection circuit, USB-C, wired with B+/B− and OUT+/OUT− leads | ✅ have |
-| Battery | LiPo, JST-PH connector, 500–800mAh | ⏳ pending |
+| Battery | LiPo 3.7V 400mAh (602530, 1.48Wh) — under the 500–800mAh target | ✅ have |
 | Power switch | Mini slide switch, 3-pin | ✅ have |
 | Record button | 4-pin tactile push button | ✅ have |
+| Boost converter | BS02 V4 step-up module, A/B solder jumpers set to 5V (TP4056 OUT+ → S3 5V pin) | ✅ have |
 
 ### 2.2 Pinout
 
@@ -59,29 +60,34 @@ No WiFi, no backend server — sync and transcription are fully local to the pho
 **SPI microSD**
 | SD pin | ESP32-S3-Zero |
 |---|---|
-| VCC | 3V3 or 5V |
+| VCC | 3V3 |
 | GND | GND |
-| SCK | GPIO7 |
-| MISO | GPIO8 |
-| MOSI | GPIO9 |
 | CS | GPIO10 |
+| MOSI | GPIO11 |
+| SCK | GPIO12 |
+| MISO | GPIO13 |
 
 **I2C OLED**
 | OLED pin | ESP32-S3-Zero |
 |---|---|
 | GND | GND |
 | VCC | 3V3 |
-| SCL | GPIO12 |
-| SDA | GPIO11 |
+| SDA | GPIO8 |
+| SCL | GPIO9 |
 
-**Record button** — one leg to GPIO2, diagonal leg to GND, `INPUT_PULLUP`.
+**Record button** — one leg to GPIO1, diagonal leg to GND, `INPUT_PULLUP`.
 
 **Power chain**
 ```mermaid
 flowchart LR
     lipo["LiPo (JST)"] -->|B+/B−| tp[TP4056]
-    tp -->|OUT+| sw[Slide switch] -->|5V| esp[ESP32-S3-Zero]
-    tp -->|"OUT− (direct, not switched)"| esp
+    tp -->|"OUT+ (3.0–4.2V)"| sw[Slide switch]
+    sw --> boost["BS02 V4 boost →5V"]
+    boost -->|5V| esp[ESP32-S3-Zero]
+    tp -->|"OUT− (direct, not switched)"| boost
+    boost -->|GND| esp
+    boost -->|GND| oled[OLED]
+    esp -->|3V3| oled
     charge["USB-C charger"] -->|charging input| tp
 ```
 Only the positive rail is switched; charging works regardless of switch position.
@@ -146,8 +152,9 @@ Board setting: "ESP32S3 Dev Module," USB CDC on boot enabled (for Serial over na
 - [x] Source all core modules
 - [x] Wire TP4056 with B+/B− and OUT+/OUT− leads
 - [ ] microSD card (pending purchase)
-- [ ] LiPo battery (pending purchase)
-- [ ] Solder headers, wire all peripherals
+- [x] Boost converter (BS02 V4, 5V) between TP4056 and S3; slide switch upstream of booster
+- [x] LiPo battery in hand (400mAh — under target, runtime TBD)
+- [x] Full assembly soldered, all peripherals wired (2026-10-11)
 - [ ] Bench-test each peripheral individually (I2S → SD → OLED → button → power)
 
 ### Phase 1 — Base firmware (v0.1 done)

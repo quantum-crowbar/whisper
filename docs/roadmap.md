@@ -48,10 +48,12 @@ validated on hardware.
 
 **⛔ Blocked on purchases** (specs.md §2.1):
 - microSD card (16–32GB, Class 10) → blocks SD write bench-test
-- LiPo battery (500–800mAh) → blocks power-chain test + battery-% work
 
-**Can proceed without those purchases:**
-- Solder headers; bench-test I2S mic, OLED, and record button (no SD/battery needed)
+**In hand since 2026-09-05:** LiPo battery — 400mAh, under the 500–800mAh target, so
+runtime needs a real measurement before Phase 4 (see [BOM notes](../hardware/bom.md#notes)).
+
+**Can proceed without that purchase:**
+- Bench-test I2S mic, OLED, and record button (assembly is soldered; no SD needed)
 - Scaffold the Android project; integrate whisper.cpp against sample WAVs
 - Confirm the SD reader module's real footprint (drives enclosure sizing — specs.md §7)
 
@@ -74,16 +76,19 @@ all three deliverables — firmware, app, enclosure — are physically in hand (
 ### Phase 0 — Hardware bring-up · 🟠
 - [x] Source all core modules
 - [x] Wire TP4056 with B+/B− and OUT+/OUT− leads
+- [x] Boost converter (BS02 V4, A/B jumpers → 5V) between TP4056 and S3; slide switch upstream of booster
+- [x] OLED powered (booster GND, S3 3V3 → VCC); record button on GPIO1
 - [ ] ⛔ microSD card (pending purchase)
-- [ ] ⛔ LiPo battery (pending purchase)
-- [ ] Solder headers, wire all peripherals ([pinout](../hardware/pinout.md))
+- [x] LiPo battery in hand (400mAh — under target, runtime TBD)
+- [x] Full assembly soldered 2026-10-11: OLED I2C (GPIO8/9), mic (GPIO4/5/6), SD reader (GPIO10–13) ([pinout](../hardware/pinout.md))
+- [ ] Verify BS02 V4 outputs 5V (multimeter + jumper continuity) before first power-up on battery
 - [ ] Bench-test each peripheral individually: I2S → SD → OLED → button → power
 
 ### Phase 1 — Base firmware · 🟠 (v0.1 written, not flashed)
 - [x] I2S mic capture → 16kHz mono WAV on SD
 - [x] Record button toggle (debounced)
 - [x] OLED status screen (idle/recording, filename, elapsed, free space)
-- [ ] Flash and validate on real hardware  ← M1 gate
+- [ ] Re-pin sketch to the as-built GPIOs (SD 10–13, OLED 8/9, button 1), then flash and validate  ← M1 gate
 - [ ] Add battery % to OLED (needs battery + ADC wiring — TBD)
 
 ### Phase 2 — BLE sync · ⚪

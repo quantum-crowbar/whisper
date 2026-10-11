@@ -58,12 +58,14 @@ use chunked transfer with progress for longer clips.
 
 Peripherals (all wired per [hardware/pinout.md](hardware/pinout.md)):
 - I2S MEMS mic → GPIO4 (BCLK) / GPIO5 (WS) / GPIO6 (DOUT), L/R→GND (mono)
-- SPI microSD → GPIO7/8/9/10 (SCK/MISO/MOSI/CS)
-- I2C OLED SSD1306 128×64 @0x3C → GPIO12 (SCL) / GPIO11 (SDA)
-- Record button → GPIO2, `INPUT_PULLUP` (short = record, long = sync, planned)
-- Power: LiPo → TP4056 → slide switch → ESP32 5V; charging independent of switch
+- SPI microSD → GPIO10/11/12/13 (CS/MOSI/SCK/MISO), 3V3
+- I2C OLED SSD1306 128×64 @0x3C → GPIO9 (SCL) / GPIO8 (SDA)
+- Record button → GPIO1, `INPUT_PULLUP` (short = record, long = sync, planned)
+- Power: LiPo → TP4056 → slide switch → BS02 V4 boost (5V) → ESP32 5V; charging
+  independent of switch. All peripherals run off the S3's 3V3 pin.
 
-**Pending purchase:** microSD card, LiPo battery. **Have:** everything else. Full parts
+**Pending purchase:** microSD card. **Have:** everything else; full assembly soldered
+2026-10-11, not yet bench-tested. Full parts
 list in [hardware/bom.md](hardware/bom.md). `pinout.md` is the wiring contract — treat
 GPIO assignments as fixed unless the user changes them there.
 
@@ -118,7 +120,7 @@ dimensions before finalizing CAD. CAD tool TBD.
 
 Working roadmap with dependencies, blockers, and milestones: [docs/roadmap.md](docs/roadmap.md).
 
-- **Phase 0** — Hardware bring-up *(in progress; SD card + LiPo pending, then solder & bench-test)*
+- **Phase 0** — Hardware bring-up *(in progress; assembly soldered, SD card pending, then bench-test)*
 - **Phase 1** — Base firmware *(v0.1 written; flash & validate on hardware next; add battery %)*
 - **Phase 2** — BLE sync *(BLE-only resolved; GATT file list + chunked transfer + MTU + long-press sync)*
 - **Phase 3** — Android app *(GATT client → pull → whisper.cpp → Room/FTS → Notes)*
