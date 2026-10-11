@@ -4,8 +4,8 @@ Target MCU: **Waveshare ESP32-S3-Zero** (USB-C, no built-in mic/SD, no JST charg
 Silkscreen pin numbers are GPIO numbers directly.
 
 **Status: full assembly soldered (2026-10-11); not yet bench-tested.** Treat this file as
-the as-built wiring. If the hardware and this file disagree, fix the file and note it in
-the devlog.
+the as-built wiring (slide switch and GPIO1 button confirmed in place). If the hardware
+and this file disagree, fix the file and note it in the devlog.
 
 ## GPIO summary
 
@@ -109,9 +109,6 @@ regardless of charge state; the S3's onboard LDO then makes 3.3V for every perip
 
 - **Verify BS02 V4 jumper setting.** Confirm the A/B solder bridges give 5V: measure
   OUTPUT+/OUTPUT− with a multimeter, and check bridge continuity under magnification.
-- **Confirm the slide switch is in the as-built wiring.** The 2026-10-11 reference sketch
-  of the assembly omits it from the power chain; this file assumes the 2026-09-05 wiring
-  (switch on TP4056 OUT+, upstream of the booster).
 - **USB back-feed.** Plugging USB-C into the S3 while the booster drives its 5V pin puts
   two 5V sources on one rail. Check the Waveshare schematic for a diode between VBUS and
   the 5V pin before relying on this.
